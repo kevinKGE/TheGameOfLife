@@ -1,0 +1,7 @@
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+Where do you want to add a cell? 
+enter two coordinates : 
