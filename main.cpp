@@ -62,46 +62,41 @@ void addCell(vector<int> coord, vector<vector<char*>> &grid)
     grid[coord[0]][coord[1]] = "0 ";
 }
 
-void lifeCycle(vector<vector<char*>> &grid)
+void killCell(vector<int> coord, vector<vector<char*>> &grid)
 {
-    for (int i = 0; i < grid.size(); i++)
-    {
-        for (int j = 0; j < grid.size(); j++)
-        {
+    grid[coord[0]][coord[1]] = ". ";
+}
+
+
+void lifeCycle(vector<vector<char*>> &grid) {
+    for (int i = 0; i < grid.size(); i++) {
+        for (int j = 0; j < grid.size(); j++) {
             int count;
 
-            count = 
-                ((grid[i - 1][j - 1] == "0 ") + (grid[i - 1][j + 1] == "0 ") + (grid[i + 1][j + 1] == "0 ") + (grid[i + 1][j - 1] == "0 ")
-                + (grid[i][j - 1] == "0 ") + (grid[i][j + 1] == "0 ") + (grid[i - 1][j] == "0 ") + (grid[i + 1][j] == "0 "));
-            }
-            cout << "essai: " << endl;
-         /*
-            if(grid[i-1][j-1] == "0 " && grid[i-1][j+1] == "0 " && grid[i+1][j+1] == "0 " && grid[i+1][j-1] == "0 "
-               && grid[i][j-1] == "0 " && grid[i][j+1] == "0 " && grid[i-1][j] == "0 " && grid[i+1][j] == "0 ")
-            {
+    
 
-            }
+    }
 
-            if(grid[i-1][j-1] == "0 " && grid[i-1][j+1] == "0 " && grid[i+1][j+1] == "0 " && grid[i+1][j-1] == "0 "
-               && grid[i][j-1] == "0 " && grid[i][j+1] == "0 " && grid[i-1][j] == "0 " && grid[i+1][j] == "0 ")
-            {
+                if (grid[i - 1][j - 1] == "0 " && grid[i - 1][j + 1] == "0 " && grid[i + 1][j + 1] == "0 " &&
+                    grid[i + 1][j - 1] == "0 "
+                    && grid[i][j - 1] == "0 " && grid[i][j + 1] == "0 " && grid[i - 1][j] == "0 " &&
+                    grid[i + 1][j] == "0 ") {
 
-            }
-*/
+                }
         }
-        }
+    }
 
 }
 
 int main()
 {
     vector<vector<char*>> grid = createGrid(5);
-    lifeCycle(grid);
     printGrid(grid);
     addCell(getCoordCell(), grid);
     printGrid(grid);
 
-
-
-    return 0;
+    while(1)
+    {
+        lifeCycle(grid);
+    }
 }
