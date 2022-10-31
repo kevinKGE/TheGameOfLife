@@ -3,11 +3,31 @@
 #include <iostream>
 #include <vector>
 #include "algorithm"
+#ifdef _WIN32
+#include <Windows.h>
+#include <unistd.h>
+#else
+#include <unistd.h>
+#endif
 
 using namespace std;
 
-/// Create grid map of life.
-/// \param gridSize
+/// Method to clear the console.
+void clear()
+{
+#if defined _WIN32
+    system("cls");
+    //clrscr(); // including header file : conio.h
+#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+    system("clear");
+    //std::cout<< u8"\033[2J\033[1;1H"; //Using ANSI Escape Sequences
+#elif defined (__APPLE__)
+    system("clear");
+#endif
+}
+
+/// Create grid.
+/// \param gridSize: int
 /// \return 2D vector of char*
 vector<vector<char*>> createGrid(int gridSize)
 {
@@ -24,7 +44,7 @@ vector<vector<char*>> createGrid(int gridSize)
     return grid;
 }
 
-///
+/// Ask the user where he want to add a cell.
 /// \return Location of a cell to place on the map
 vector<int> getCoordCell()
 {
@@ -32,7 +52,7 @@ vector<int> getCoordCell()
     vector<int> coord;
 
     cout << "Where do you want to add a cell? " << endl;
-    cout << "enter two coordinates : " << endl;
+    cout << "enter two coordinates: " << endl;
     cin >> x >> y;
 
     coord.push_back(x);
@@ -41,7 +61,7 @@ vector<int> getCoordCell()
     return coord;
 }
 
-/// Print grid in the console.
+/// Display the grid in the console.
 /// \param grid
 void printGrid(vector<vector<char*>> grid)
 {
@@ -76,6 +96,8 @@ void killCell(vector<int> coord, vector<vector<char*>> &grid)
 /// \param grid: vector<vector<char*>>
 void lifeCycle(vector<vector<char*>> &grid) {
 
+    vector<vector<char*>> gridTemp = grid;
+
     for (int i = 1; i < grid.size() -1; ++i) {
         for (int j = 1; j < grid.size() -1; ++j) {
 
@@ -99,13 +121,14 @@ void lifeCycle(vector<vector<char*>> &grid) {
             // Dead of live condition:
             if (alive == 3 )
             {
-                grid[i][j] = "0 ";
+                addCell({i, j}, gridTemp);
             } else if (alive < 2 || alive > 3)
             {
-                grid[i][j] = ". ";
+                killCell({i, j}, gridTemp);
             }
         }
     }
+    grid = gridTemp;
 }
 
 /// Loop of the game of life.
@@ -120,10 +143,21 @@ int main()
     freopen("Error.txt", "w", stderr);
 */
 
-    vector<vector<char*>> grid = createGrid(10);
 
     int cells = 0;
-    int cellsNumber = 8;
+    int cellsNumber;
+    int loopsNumber;
+    int gridSize;
+
+    cout << "Hello ! Welcome in The Game Of Life." << endl;
+    cout << "Please enter the size of the grid that you want to display:" << endl;
+    cin >> gridSize;
+    cout << "Please enter the number of loops that you want to execute:" << endl;
+    cin >> loopsNumber;
+    cout << "Finally, enter the number of cells that you want to put in the grid:" << endl;
+    cin >> cellsNumber;
+
+    vector<vector<char*>> grid = createGrid(gridSize);
 
     while(cells < cellsNumber) {
         addCell(getCoordCell(), grid);
@@ -133,12 +167,12 @@ int main()
 
     int loops = 0;
 
-    while(loops < 10) {
+    while(loops < loopsNumber) {
         cout << "Life cycle: " << loops << endl;
         lifeCycle(grid);
         printGrid(grid);
+        sleep(1.2);
         loops++;
+        clear();
     }
-
-
 }
