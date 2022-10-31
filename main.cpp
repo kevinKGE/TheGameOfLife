@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include "algorithm"
+#include "iterator"
+
 /*
 #ifndef ONLINE_JUDGE
     freopen("Input.txt", "r", stdin);
@@ -11,19 +14,21 @@
     freopen("Error.txt", "w", stderr);
 #endif
 */
+
 using namespace std;
 
 void createGrid(int gridSize)
 {
-    vector<vector<string>> grid;
+    // vector<vector<char*>> grid2 = {{"a","b"},{"c", "d"}};
+    vector<vector<char*>> grid;
 
     for (int i = 0; i < gridSize; i++)
     {
-        for (int j = 0; j < gridSize; i++)
+        grid.push_back({". "});
+        for (int j = 0; j < gridSize; j++)
         {
-            grid[i][j] = ".";
-            cout << grid[i][j] << " ";
-
+            grid[i].push_back(". ");
+            cout << grid[i][j];
         }
         cout << endl;
     }
@@ -32,6 +37,6 @@ void createGrid(int gridSize)
 
 int main()
 {
-    createGrid(10);
+    createGrid(50);
     return 0;
 }
