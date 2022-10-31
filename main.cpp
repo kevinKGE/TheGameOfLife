@@ -6,7 +6,7 @@
 #include <string.h>
 
 using namespace std;
-
+/*
 void createGrid(int gridSize)
 {
     vector<vector<string>> grid;
@@ -28,4 +28,9 @@ int main()
 {
     createGrid(10);
     return 0;
+}
+ */
+int main()
+{
+    cout << "hello world" << endl;
 }
