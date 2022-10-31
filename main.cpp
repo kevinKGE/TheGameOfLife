@@ -4,16 +4,22 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
-
-using namespace std;
 /*
+#ifndef ONLINE_JUDGE
+    freopen("Input.txt", "r", stdin);
+    freopen("Output.txt", "w", stdout);
+    freopen("Error.txt", "w", stderr);
+#endif
+*/
+using namespace std;
+
 void createGrid(int gridSize)
 {
     vector<vector<string>> grid;
 
-    for (int i = 0; i< gridSize; i++)
+    for (int i = 0; i < gridSize; i++)
     {
-        for (int j = 0; j< gridSize; i++)
+        for (int j = 0; j < gridSize; i++)
         {
             grid[i][j] = ".";
             cout << grid[i][j] << " ";
@@ -28,9 +34,4 @@ int main()
 {
     createGrid(10);
     return 0;
-}
- */
-int main()
-{
-    cout << "hello world" << endl;
 }
