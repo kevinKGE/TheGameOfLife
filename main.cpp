@@ -132,6 +132,9 @@ void lifeCycle(vector<vector<char*>> &grid) {
     grid = gridTemp;
 }
 
+/// Add a number of cells randomly
+/// \param nbOfCells: int
+/// \param grid: vector<vector<char*>>
 void addCellsRandomly(int nbOfCells, vector<vector<char*>> &grid)
 {
     int randomX, randomY;
@@ -143,9 +146,7 @@ void addCellsRandomly(int nbOfCells, vector<vector<char*>> &grid)
         if(grid[randomX][randomY] == ". ")
         {
             addCell({randomX, randomY}, grid);
-        }
-        else
-        {
+        } else{
             --i;
         }
     }
@@ -178,7 +179,7 @@ int main()
 
     vector<vector<char*>> grid = createGrid(gridSize);
 
-    addCellsRandomly((gridSize*gridSize/3), grid);
+    // addCellsRandomly((gridSize*gridSize/3), grid);
 
     while(cells < cellsNumber) {
         addCell(getCoordCell(), grid);
