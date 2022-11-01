@@ -23,3 +23,7 @@ I invite you to:
     - x: 21 y: 23
 
 Have fun testing your own cell paterns and watch them evolve!
+
+## Author
+
+- [@KevinKGE](https://github.com/kevinKGE)
