@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "algorithm"
+#include <cstdlib>
 #ifdef _WIN32
 #include <Windows.h>
 #include <unistd.h>
@@ -131,6 +132,25 @@ void lifeCycle(vector<vector<char*>> &grid) {
     grid = gridTemp;
 }
 
+void addCellsRandomly(int nbOfCells, vector<vector<char*>> &grid)
+{
+    int randomX, randomY;
+    for(int i = 0; i < nbOfCells; ++i)
+    {
+        randomX = 1 + (rand() % (grid.size()-1));
+        randomY = 1 + (rand() % (grid.size()-1));
+
+        if(grid[randomX][randomY] == ". ")
+        {
+            addCell({randomX, randomY}, grid);
+        }
+        else
+        {
+            --i;
+        }
+    }
+}
+
 /// Loop of the game of life.
 /// \return
 int main()
@@ -142,7 +162,6 @@ int main()
     freopen("Output.txt", "w", stdout);
     freopen("Error.txt", "w", stderr);
 */
-
 
     int cells = 0;
     int cellsNumber;
@@ -158,6 +177,8 @@ int main()
     cin >> cellsNumber;
 
     vector<vector<char*>> grid = createGrid(gridSize);
+
+    addCellsRandomly((gridSize*gridSize/3), grid);
 
     while(cells < cellsNumber) {
         addCell(getCoordCell(), grid);
