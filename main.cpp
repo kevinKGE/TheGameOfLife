@@ -76,7 +76,7 @@ void printGrid(vector<vector<char*>> grid)
     }
 }
 
-/// Add a cell on the map.
+/// Add a cell in the grid.
 /// \param coord: {int, int}
 /// \param grid:  vector<vector<char*>>
 void addCell(vector<int> coord, vector<vector<char*>> &grid)
@@ -84,7 +84,7 @@ void addCell(vector<int> coord, vector<vector<char*>> &grid)
     grid[coord[0]][coord[1]] = "0 ";
 }
 
-/// Remove a cell from the map.
+/// Remove a cell from the grid.
 /// \param coord
 /// \param grid
 void killCell(vector<int> coord, vector<vector<char*>> &grid)
@@ -93,7 +93,7 @@ void killCell(vector<int> coord, vector<vector<char*>> &grid)
 }
 
 
-/// Read the map and kill or create cells.
+/// Read the grid,kill or create cells and modify the grid.
 /// \param grid: vector<vector<char*>>
 void lifeCycle(vector<vector<char*>> &grid) {
 
@@ -178,7 +178,7 @@ int main()
 
     vector<vector<char*>> grid = createGrid(gridSize);
 
-    addCellsRandomly((gridSize*gridSize/3), grid);
+    // addCellsRandomly((gridSize*gridSize/3), grid);
 
     while(cells < cellsNumber) {
         addCell(getCoordCell(), grid);
@@ -187,12 +187,13 @@ int main()
     printGrid(grid);
 
     int loops = 0;
+    int timeOfSleep = 1;
 
     while(loops < loopsNumber) {
         cout << "Life cycle: " << loops << endl;
         lifeCycle(grid);
         printGrid(grid);
-        sleep(1.2);
+        sleep(timeOfSleep);
         loops++;
         clear();
     }
