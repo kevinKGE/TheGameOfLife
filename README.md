@@ -6,7 +6,7 @@ The Game of Life, also known simply as Life, is a cellular automaton.
 I invite you to:
 - Run TheGameOfLife/cmake-build-debug/TheGameOfLife.exe
 - Initialize a grid (of size 50 for example)
-- Choose a loops number (100 for example)
+- Choose the number of loops (100 for example)
 - Test the following cell coordinate settings:
     - x: 21 y: 21
     - x: 22 y: 21

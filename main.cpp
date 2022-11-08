@@ -13,7 +13,7 @@
 
 using namespace std;
 
-/// Method to clear the console.
+/// Method for cleaning the console.
 void clear()
 {
 #if defined _WIN32
@@ -27,7 +27,7 @@ void clear()
 #endif
 }
 
-/// Create grid.
+/// Grid generator.
 /// \param gridSize: int
 /// \return 2D vector of char*
 vector<vector<char*>> createGrid(int gridSize)
@@ -45,7 +45,7 @@ vector<vector<char*>> createGrid(int gridSize)
     return grid;
 }
 
-/// Ask the user where he want to add a cell.
+/// Ask the user where he wants to add a cell.
 /// \return Location of a cell to place on the map
 vector<int> getCoordCell()
 {
@@ -119,7 +119,7 @@ void lifeCycle(vector<vector<char*>> &grid) {
                 }
             }
 
-            // Dead of live condition:
+            // Dead or live condition:
             if (alive == 3 )
             {
                 addCell({i, j}, gridTemp);
@@ -132,6 +132,9 @@ void lifeCycle(vector<vector<char*>> &grid) {
     grid = gridTemp;
 }
 
+/// Add a number of cells randomly
+/// \param nbOfCells: int
+/// \param grid: vector<vector<char*>>
 void addCellsRandomly(int nbOfCells, vector<vector<char*>> &grid)
 {
     int randomX, randomY;
@@ -143,9 +146,7 @@ void addCellsRandomly(int nbOfCells, vector<vector<char*>> &grid)
         if(grid[randomX][randomY] == ". ")
         {
             addCell({randomX, randomY}, grid);
-        }
-        else
-        {
+        } else{
             --i;
         }
     }
@@ -168,7 +169,7 @@ int main()
     int loopsNumber;
     int gridSize;
 
-    cout << "Hello ! Welcome in The Game Of Life." << endl;
+    cout << "Hello ! Welcome to The Game Of Life." << endl;
     cout << "Please enter the size of the grid that you want to display:" << endl;
     cin >> gridSize;
     cout << "Please enter the number of loops that you want to execute:" << endl;
