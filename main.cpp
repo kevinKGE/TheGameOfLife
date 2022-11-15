@@ -30,16 +30,16 @@ void clear()
 /// Grid generator.
 /// \param gridSize: int
 /// \return 2D vector of char*
-vector<vector<char*>> createGrid(int gridSize)
+vector<vector<bool>> createGrid(int gridSize)
 {
-    vector<vector<char*>> grid;
+    vector<vector<bool>> grid;
 
     for (int i = 0; i < gridSize; i++)
     {
         grid.push_back({});
         for (int j = 0; j < gridSize; j++)
         {
-            grid[i].push_back(". ");
+            grid[i].push_back(false);
         }
     }
     return grid;
@@ -64,13 +64,20 @@ vector<int> getCoordCell()
 
 /// Display the grid in the console.
 /// \param grid
-void printGrid(vector<vector<char*>> grid)
+void printGrid(vector<vector<bool>> grid)
 {
     for (int i = 0; i < grid.size(); ++i)
     {
         for (int j = 0; j < grid.size(); ++j)
         {
-            cout << grid[i][j];
+            if(grid[i][j] == true)
+            {
+            cout << "0 ";
+            }
+            else
+            {
+                cout << ". ";
+            }
         }
         cout << endl;
     }
@@ -79,25 +86,25 @@ void printGrid(vector<vector<char*>> grid)
 /// Add a cell in the grid.
 /// \param coord: {int, int}
 /// \param grid:  vector<vector<char*>>
-void addCell(vector<int> coord, vector<vector<char*>> &grid)
+void addCell(vector<int> coord, vector<vector<bool>> &grid)
 {
-    grid[coord[0]][coord[1]] = "0 ";
+    grid[coord[0]][coord[1]] = true;
 }
 
 /// Remove a cell from the grid.
 /// \param coord
 /// \param grid
-void killCell(vector<int> coord, vector<vector<char*>> &grid)
+void killCell(vector<int> coord, vector<vector<bool>> &grid)
 {
-    grid[coord[0]][coord[1]] = ". ";
+    grid[coord[0]][coord[1]] = false;
 }
 
 
 /// Read the grid,kill or create cells and modify the grid.
-/// \param grid: vector<vector<char*>>
-void lifeCycle(vector<vector<char*>> &grid) {
+/// \param grid: vector<vector<bool>>
+void lifeCycle(vector<vector<bool>> &grid) {
 
-    vector<vector<char*>> gridTemp = grid;
+    vector<vector<bool>> gridTemp = grid;
 
     for (int i = 1; i < grid.size() -1; ++i) {
         for (int j = 1; j < grid.size() -1; ++j) {
@@ -113,7 +120,7 @@ void lifeCycle(vector<vector<char*>> &grid) {
                 cellToCheck[0] += neighbors[k][0];
                 cellToCheck[1] += neighbors[k][1];
 
-                if(grid[cellToCheck[0]][cellToCheck[1]] == "0 ")
+                if(grid[cellToCheck[0]][cellToCheck[1]] == true)
                 {
                    alive++;
                 }
@@ -134,8 +141,8 @@ void lifeCycle(vector<vector<char*>> &grid) {
 
 /// Add a number of cells randomly
 /// \param nbOfCells: int
-/// \param grid: vector<vector<char*>>
-void addCellsRandomly(int nbOfCells, vector<vector<char*>> &grid)
+/// \param grid: vector<vector<bool>>
+void addCellsRandomly(int nbOfCells, vector<vector<bool>> &grid)
 {
     int randomX, randomY;
     for(int i = 0; i < nbOfCells; ++i)
@@ -143,7 +150,7 @@ void addCellsRandomly(int nbOfCells, vector<vector<char*>> &grid)
         randomX = 1 + (rand() % (grid.size()-1));
         randomY = 1 + (rand() % (grid.size()-1));
 
-        if(grid[randomX][randomY] == ". ")
+        if(grid[randomX][randomY] == false)
         {
             addCell({randomX, randomY}, grid);
         } else{
@@ -177,7 +184,7 @@ int main()
     cout << "Finally, enter the number of cells that you want to put in the grid:" << endl;
     cin >> cellsNumber;
 
-    vector<vector<char*>> grid = createGrid(gridSize);
+    vector<vector<bool>> grid = createGrid(gridSize);
 
     // addCellsRandomly((gridSize*gridSize/3), grid);
 
