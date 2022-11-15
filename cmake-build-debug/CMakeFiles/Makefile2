@@ -44,19 +44,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = B:\Programmation\Repos\TheGameOfLife
+CMAKE_SOURCE_DIR = "C:\Users\gerbe\Documents\Projets perso\TheGameOfLife"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = B:\Programmation\Repos\TheGameOfLife\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\gerbe\Documents\Projets perso\TheGameOfLife\cmake-build-debug"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -80,14 +80,14 @@ clean: CMakeFiles/TheGameOfLife.dir/clean
 CMakeFiles/TheGameOfLife.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TheGameOfLife.dir\build.make CMakeFiles/TheGameOfLife.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TheGameOfLife.dir\build.make CMakeFiles/TheGameOfLife.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=B:\Programmation\Repos\TheGameOfLife\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target TheGameOfLife"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\gerbe\Documents\Projets perso\TheGameOfLife\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target TheGameOfLife"
 .PHONY : CMakeFiles/TheGameOfLife.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TheGameOfLife.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start B:\Programmation\Repos\TheGameOfLife\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\gerbe\Documents\Projets perso\TheGameOfLife\cmake-build-debug\CMakeFiles" 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/TheGameOfLife.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start B:\Programmation\Repos\TheGameOfLife\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\gerbe\Documents\Projets perso\TheGameOfLife\cmake-build-debug\CMakeFiles" 0
 .PHONY : CMakeFiles/TheGameOfLife.dir/rule
 
 # Convenience name for target.
