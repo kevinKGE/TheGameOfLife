@@ -1,7 +1,7 @@
 # The Game Of Life
 
-This is a personal project that I did in my spare time.
-The Game of Life, also known simply as Life, is a cellular automaton.
+This is a personal project I did in my spare time.
+The Game of Life, also known as "Life", is a cellular automaton.
 
 I invite you to:
 - Run TheGameOfLife/cmake-build-debug/TheGameOfLife.exe
